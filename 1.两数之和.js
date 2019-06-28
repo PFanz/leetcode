@@ -33,3 +33,15 @@ var twoSum = function (nums, target) {
   }
   return []
 }
+
+// 下面是目前最快的方式
+var twoSum = function (nums, target) {
+  let obj = {}
+  for (var i = 0; i < nums.length; i++) {
+    // 遍历的同时，寻找是否有解，如果有就直接返回；没有的话，继续寻找下个，因为对map是已经保存有前面的信息的
+    if (obj[target - nums[i]] !== undefined) {
+      return [obj[target - nums[i]], i]
+    }
+    obj[nums[i]] = i
+  }
+}
